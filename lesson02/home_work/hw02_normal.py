@@ -5,6 +5,19 @@
 # если такой корень вообще можно извлечь
 # Пример: Дано: [2, -5, 8, 9, -25, 25, 4]   Результат: [3, 5, 2]
 
+import math
+
+list_start = [2, -5, 8, 9, -25, 25, 4]
+
+list_int_roots = []
+
+for i in list_start:
+    if i >= 0:
+        all_roots = math.sqrt(i)
+        if all_roots - math.floor(all_roots) == 0:
+            list_int_roots.append(int(all_roots))
+
+print(list_int_roots)
 
 # Задача-2: Дана дата в формате dd.mm.yyyy, например: 02.11.2013.
 # Ваша задача вывести дату в текстовом виде, например: второе ноября 2013 года.
