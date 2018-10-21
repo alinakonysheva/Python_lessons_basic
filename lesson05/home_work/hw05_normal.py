@@ -13,3 +13,60 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+import hw05_easy
+import os
+
+def main_menu():
+    temp = -1
+    while temp != 0:
+        print("Введите 1, если Вам нужно перейти в другую папку")
+        print("Введите 2, если Вам нужно порсмотреть содержимое текущей папки")
+        print("Введите 3, если Вам нужно удалить папку")
+        print("Введите 4, если Вам нужно создать папку")
+        print("Введите 0, если Вам все надоело")
+
+        temp = int(input("Что желаете, мой господин?      "))
+
+        if temp == 1:
+        # Осуществляем переход в папку, в два действия: покажем директории,
+        # затем покажем, что лежит в выбранной директории
+            hw05_easy.show_all_dirs()
+            name1 = input("в какую папку Вы желаете перейти?     ")
+            path = os.path.join(os.getcwd(), name1)
+            dirs = os.listdir(path)
+            print(dirs)
+
+        elif temp == 2:
+            print("2")
+            hw05_easy.show_all_dirs()
+
+
+        elif temp == 3:
+            # Удалить папку
+            name_dir = str(input('Какую папку Вы желаете удалить?     '))
+            dir_path = os.path.join(os.getcwd(), name_dir)
+
+            try:
+                os.rmdir(dir_path)
+                return
+            except FileExistsError:
+                print('Такой директория не существует')
+
+        elif temp == 4:
+            name_dir = str(input('Как желаете назвать новую папку?'))
+            dir_path = os.path.join(os.getcwd(), name_dir)
+            try:
+                os.mkdir(dir_path)
+                return
+            except FileExistsError:
+                print('Папка с таким названием уже существует')
+
+        elif temp == 0:
+            print("До свидания, господин!")
+            return
+
+        else:
+            print("Господин, подумайте еще раз")
+
+
+main_menu()
