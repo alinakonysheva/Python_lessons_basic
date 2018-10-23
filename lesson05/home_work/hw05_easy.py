@@ -49,13 +49,13 @@ while a < 10:
 
 import os
 
-
 def show_all_dirs():
 # вызов: отображает папки текущей директории
     path = os.path.join(os.getcwd())
     dirs = os.listdir(path)
     print(dirs)
 
+show_all_dirs()
 
 # Задача-3:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
@@ -67,3 +67,4 @@ def copy_this_file():
     return
 
 
+copy_this_file()
