@@ -36,7 +36,6 @@ def delete_one_dir(dir_path):
         print('Такой директории не существует')
     return
 
-
 # удаляем девять директорий
 
 a = 1
@@ -58,8 +57,6 @@ def show_all_dirs():
     print(dirs)
 
 
-show_all_dirs()
-
 # Задача-3:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
 import sys
@@ -69,4 +66,4 @@ def copy_this_file():
     shutil.copyfile(sys.argv[0], sys.argv[0]+'.copy')
     return
 
-copy_this_file()
+
