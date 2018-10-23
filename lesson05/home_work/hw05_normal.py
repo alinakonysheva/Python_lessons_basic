@@ -45,21 +45,12 @@ def main_menu():
             # Удалить папку
             name_dir = str(input('Какую папку Вы желаете удалить?     '))
             dir_path = os.path.join(os.getcwd(), name_dir)
-
-            try:
-                os.rmdir(dir_path)
-                return
-            except FileExistsError:
-                print('Такой директория не существует')
+            delete_one_dir(dir_path)
 
         elif temp == 4:
             name_dir = str(input('Как желаете назвать новую папку?'))
             dir_path = os.path.join(os.getcwd(), name_dir)
-            try:
-                os.mkdir(dir_path)
-                return
-            except FileExistsError:
-                print('Папка с таким названием уже существует')
+            create_one_dir(dir_path)
 
         elif temp == 0:
             print("До свидания, господин!")

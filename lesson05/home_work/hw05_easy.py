@@ -5,35 +5,45 @@
 
 import os
 
-def create_dirs():
-# функция, которая создает девять папок с именем dir_n
-    a = 1
-    while a < 10:
-        dir_path = os.path.join(os.getcwd(), 'dir_{}'.format(a))
-        a = a + 1
-        try:
-            os.mkdir(dir_path)
-        except FileExistsError:
-            print('Такая директория уже существует')
 
-    return
+def create_one_dir(dir_path):
+    # функция, которая создает одну папку
 
-# функция, которая удаляет девять папок с именем dir_n
-def delete_dirs():
-    a = 1
-    while a < 10:
-        dir_path = os.path.join(os.getcwd(), 'dir_{}'.format(a))
-        try:
-            os.rmdir(dir_path)
-        except FileExistsError:
-            print('Такая директория уже не существует')
-        a = a + 1
-
+    try:
+        os.mkdir(dir_path)
+        print('Директория удачно создана!')
+    except FileExistsError:
+        print('Такая директория уже существует')
     return
 
 
-create_dirs()
-delete_dirs()
+# создаем девять директорий
+
+a = 1
+while a < 10:
+    dir_path = os.path.join(os.getcwd(), 'dir_{}'.format(a))
+
+    create_one_dir(dir_path)
+
+    a = a + 1
+
+
+def delete_one_dir(dir_path):
+    try:
+        os.rmdir(dir_path)
+        print('Директория удалена!')
+    except FileNotFoundError:
+        print('Такой директории не существует')
+    return
+
+
+# удаляем девять директорий
+
+a = 1
+while a < 10:
+    dir_path = os.path.join(os.getcwd(), 'dir_{}'.format(a))
+    delete_one_dir(dir_path)
+    a = a + 1
 
 # Задача-2:
 # Напишите скрипт, отображающий папки текущей директории.
