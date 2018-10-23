@@ -40,6 +40,8 @@ def main_menu():
                 print(dirs)
                 print('Успешно перешли!')
             except NotADirectoryError:
+                print('Это не папка, перейти невозможно')
+            except FileNotFoundError:
                 print('Такого имени папки не существует, перейти невозможно')
 
         elif temp == 2:

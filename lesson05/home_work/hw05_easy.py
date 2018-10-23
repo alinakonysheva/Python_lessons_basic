@@ -66,5 +66,4 @@ def copy_this_file():
     shutil.copyfile(sys.argv[0], sys.argv[0]+'.copy')
     return
 
-
 copy_this_file()
