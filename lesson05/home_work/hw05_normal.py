@@ -33,7 +33,7 @@ def main_menu():
         # Осуществляем переход в папку, в два действия: покажем директории,
         # затем покажем, что лежит в выбранной директории
             hw05_easy.show_all_dirs()
-            name1 = input("в какую папку Вы желаете перейти?     ")
+            name1 = input("в какую папку Вы желаете перейти?    ")
             path = os.path.join(os.getcwd(), name1)
             try:
                 dirs = os.listdir(path)
