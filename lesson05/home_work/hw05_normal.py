@@ -38,6 +38,7 @@ def main_menu():
             try:
                 dirs = os.listdir(path)
                 print(dirs)
+                print('Успешно перешли!')
             except NotADirectoryError:
                 print('Такого имени папки не существует, перейти невозможно')
 
