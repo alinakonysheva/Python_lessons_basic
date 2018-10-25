@@ -15,3 +15,34 @@
 #  (Ученик --> Класс --> Учителя --> Предметы)
 # 4. Узнать ФИО родителей указанного ученика
 # 5. Получить список всех Учителей, преподающих в указанном классе
+
+
+class Teacher:
+    def __init__(self, course):
+        self.course = course
+
+
+class Parent:
+    def __init__(self, fio):
+        self.fio = fio
+
+
+class Student:
+    def __init__(self, dad, mom):
+        self.dad = dad
+        self.mom = mom
+
+
+class Group:
+    def __init__(self, number, students):
+        self.number = number
+        self.students = students
+
+
+class Course:
+    def __init__(self, name):
+        self.name = name
+
+class School:
+    def addGroup(self, group):
+        self.group = group
