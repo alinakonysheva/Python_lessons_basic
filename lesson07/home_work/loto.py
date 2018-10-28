@@ -57,3 +57,97 @@
 модуль random: http://docs.python.org/3/library/random.html
 
 """
+import random
+
+class Loto_card:
+    def __init__(self):
+
+        # заводим 15 неповторяющихся чисел на карточке и сортируем в каждой строке
+        self.a = random.sample(range(1, 90), 15)
+
+        self.line1 = self.a[0:5]
+        self.line1.sort()
+        self.line2 = self.a[5:10]
+        self.line2.sort()
+        self.line3 = self.a[10:15]
+        self.line3.sort()
+
+    def print_card(self):
+        print(self.line1)
+        print(self.line2)
+        print(self.line3)
+
+# проверяем на существование номера в карточке
+
+    def is_exist(self, num):
+
+        for i in self.a:
+            if num == i:
+                return True
+        return False
+
+    def del_num(self, num):
+
+        if self.is_exist(num):
+            self.a.remove(num)
+            self.line1 = ['-' if x == num else x for x in self.line1]
+            self.line2 = ['-' if x == num else x for x in self.line2]
+            self.line3 = ['-' if x == num else x for x in self.line3]
+
+loto1 = Loto_card()
+loto2 = Loto_card()
+
+# крутим барабан
+
+class Drum:
+    def __init__(self):
+        self.barrels = [i for i in range(1, 90)]
+
+# вытаскиваем бочонок и удаляем из барабана
+
+    def get_lucky_num(self):
+        return self.barrels.pop(random.randrange(0, len(self.barrels)))
+
+num1 = Drum()
+
+# крутим бочонок до тех пор, пока в карточках остаются числа
+
+while len(loto1.a) > 0 and len(loto2.a) > 0:
+
+    a = num1.get_lucky_num()
+    print("число : {} Бочонков осталось:{}".format(a, len(num1.barrels) + 1))
+    print("Карточка компьютера")
+    print("--------------------")
+    loto1.print_card()
+    print("--------------------")
+    print("Ваша карточка")
+    print("--------------------")
+    loto2.print_card()
+    print("--------------------")
+
+    b = input("Желаете вычеркнуть этот номер из Вашей карточки? y/n      ")
+
+    if b == 'y':
+        if loto2.is_exist(a):
+            loto2.del_num(a)
+        else:
+            print("Игра закончилась. Вы проиграли, у Вас такого числа в карточке нет")
+            break
+    elif b == 'n':
+        if loto2.is_exist(a):
+            print("Игра закончилась. Вы проиграли, Ваша карточка содержит это число")
+            break
+    else:
+        print("Игра закончилась. Вы пытаетесь переложить ответственность на программу, это неприемлимо")
+        break
+
+    if loto1.is_exist(a):
+        loto1.del_num(a)
+
+
+if len(loto1.a) == 0:
+    print("Победила машина!")
+
+if len(loto2.a) == 0:
+    print("Вы победили, ура!")
+
