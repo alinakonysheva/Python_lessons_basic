@@ -72,6 +72,8 @@ class Loto_card:
         self.line3 = self.a[10:15]
         self.line3.sort()
 
+# выводим карточки
+
     def print_card(self):
         print(self.line1)
         print(self.line2)
