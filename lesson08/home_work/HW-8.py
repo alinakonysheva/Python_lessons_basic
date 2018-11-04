@@ -132,5 +132,3 @@ try:
             r = False
 except KeyboardInterrupt:
     print("До скорых встреч!")
-
-
